@@ -1,5 +1,5 @@
 module PagerBot::Plugins
-  class CallPerson
+  class PagePerson
     include PagerBot::PluginBase
     responds_to :queries, :manual
     description "Page a person by nick or schedule. Needs a scratch schedule, escalation policy, and service."
@@ -14,16 +14,16 @@ module PagerBot::Plugins
     def self.manual
       {
         description: "Page a person by nick or schedule (which could be a team)",
-        syntax: ["get PERSON|SCHEDULE [SUBJECT]"],
+        syntax: ["page PERSON|SCHEDULE [SUBJECT]"],
         examples: [
-          "get karl you are needed in warroom",
-          "get myschedule the load balancers are down"
+          "page karl you are needed in warroom",
+          "page myschedule the load balancers are down"
         ]
       }
     end
 
     def parse(query)
-      return unless query[:command] == "get"
+      return unless query[:command] == "page"
 
       to = []
       subject = []

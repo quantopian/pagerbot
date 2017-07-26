@@ -1,7 +1,7 @@
 require_relative('../../../_lib')
 require 'json'
 
-class CallPerson < Critic::MockedPagerDutyTest
+class PagePerson < Critic::MockedPagerDutyTest
   before do
     @service = {
       id: "PFAKESRV",
@@ -20,7 +20,7 @@ class CallPerson < Critic::MockedPagerDutyTest
       .returns(:service => @service)
 
     config = { service_id: "PFAKESRV", schedule_id: "PFAKESCHED"}
-    @plugin = PagerBot::PluginManager.load_plugin "call_person", config
+    @plugin = PagerBot::PluginManager.load_plugin "page_person", config
   end
 
   describe 'Alerting people directly plugin' do
